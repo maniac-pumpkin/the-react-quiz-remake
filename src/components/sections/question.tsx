@@ -9,11 +9,11 @@ import { useSectionContext } from "../../contexts/section.context"
 
 export default function QuestionSection() {
   const [option, setOption] = useState<number | null>(null)
+  const { dispatch: sectionDispatch } = useSectionContext()
   const {
     state: { questions, currentIndex },
     dispatch: quizDispatch,
   } = useQuizContext()
-  const { dispatch: sectionDispatch } = useSectionContext()
 
   const isOptionCorrect = option === questions?.[currentIndex].correctAnswer
   const listColor = isOptionCorrect ? "green" : "red"

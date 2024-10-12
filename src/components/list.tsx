@@ -16,8 +16,6 @@ const applyStyle = (mode: PropsType["color"]) => {
   }
 }
 
-// <p className="bg-softDark p-5 font-normal"></p>
-
 function List({ children, className, color = "default", ...props }: PropsType) {
   return (
     <li

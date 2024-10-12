@@ -54,15 +54,13 @@ export const quizReducer = (
       return { ...state, totalScore: state.totalScore + action.payload }
     case "update/maxTime":
       return { ...state, maxTime: action.payload }
-    case "reset/timer":
-      return { ...state, maxTime: 0 }
     case "reset/everything":
       return {
-        questions: null,
+        ...state,
         correctAnswersCount: 0,
         totalScore: 0,
-        maxTime: 0,
         currentIndex: 0,
+        maxTime: 0,
       }
     default:
       return state
