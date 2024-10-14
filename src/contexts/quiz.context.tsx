@@ -15,13 +15,13 @@ import useInitializeQuiz from "../hooks/use-initialize-quiz"
 import useEndQuiz from "../hooks/use-end-quiz"
 
 type ContextType = {
-  state: QuizType
-  dispatch: Dispatch<QuizActionType>
+  quizState: QuizType
+  quizDispatch: Dispatch<QuizActionType>
 }
 
 const Context = createContext<ContextType | null>(null)
 export function QuizProvider({ children }: PropsWithChildren) {
-  const [state, dispatch] = useReducer(quizReducer, {
+  const [quizState, quizDispatch] = useReducer(quizReducer, {
     questions: null,
     currentIndex: 0,
     correctAnswersCount: 0,
@@ -29,15 +29,17 @@ export function QuizProvider({ children }: PropsWithChildren) {
     maxTime: 0,
   })
   const {
-    state: { selectedTopic, selectedDifficulty },
-    dispatch: sectionDispatch,
+    sectionState: { selectedTopic, selectedDifficulty },
+    sectionDispatch: sectionDispatch,
   } = useSectionContext()
 
-  useInitializeQuiz(selectedTopic, selectedDifficulty, dispatch)
-  useEndQuiz(state, sectionDispatch)
+  useInitializeQuiz(selectedTopic, selectedDifficulty, quizDispatch)
+  useEndQuiz(quizState, sectionDispatch)
 
   return (
-    <Context.Provider value={{ state, dispatch }}>{children}</Context.Provider>
+    <Context.Provider value={{ quizState, quizDispatch }}>
+      {children}
+    </Context.Provider>
   )
 }
 

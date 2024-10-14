@@ -3,15 +3,12 @@ import { createRoot } from "react-dom/client"
 import App from "./app"
 import "./styles/index.css"
 
-import { SectionProvider } from "./contexts/section.context"
-import { QuizProvider } from "./contexts/quiz.context"
+import GlobalContextProvider from "./contexts/index.context"
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <SectionProvider>
-      <QuizProvider>
-        <App />
-      </QuizProvider>
-    </SectionProvider>
+    <GlobalContextProvider>
+      <App />
+    </GlobalContextProvider>
   </StrictMode>,
 )

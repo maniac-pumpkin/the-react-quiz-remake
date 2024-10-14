@@ -5,10 +5,10 @@ import { useSectionContext } from "../../contexts/section.context"
 
 export default function ScoresSection() {
   const {
-    state: { questions, totalScore, correctAnswersCount },
-    dispatch: quizDispatch,
+    quizState: { questions, totalScore, correctAnswersCount },
+    quizDispatch,
   } = useQuizContext()
-  const { dispatch: sectionDispatch } = useSectionContext()
+  const { sectionDispatch } = useSectionContext()
 
   const resetFn = () => {
     sectionDispatch({ type: "update/phase", payload: "topic_selection" })

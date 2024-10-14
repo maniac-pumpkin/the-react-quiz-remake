@@ -3,10 +3,10 @@ import Button from "../button"
 import { useSectionContext } from "../../contexts/section.context"
 
 export default function WelcomeSection() {
-  const { dispatch } = useSectionContext()
+  const { sectionDispatch } = useSectionContext()
 
   const goToTopics = () =>
-    dispatch({ type: "update/phase", payload: "topic_selection" })
+    sectionDispatch({ type: "update/phase", payload: "topic_selection" })
 
   return (
     <section className="contents text-center">

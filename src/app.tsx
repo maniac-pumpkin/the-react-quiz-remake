@@ -6,9 +6,9 @@ import ScoresSection from "./components/sections/scores"
 import { useSectionContext } from "./contexts/section.context"
 
 export default function App() {
-  const { state } = useSectionContext()
+  const { sectionState } = useSectionContext()
 
-  switch (state.phase) {
+  switch (sectionState.phase) {
     case "ready":
       return <WelcomeSection />
     case "topic_selection":

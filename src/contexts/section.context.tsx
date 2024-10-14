@@ -12,20 +12,22 @@ import {
 } from "./reducers/section.reducer"
 
 type ContextType = {
-  state: SectionType
-  dispatch: Dispatch<SectionActionType>
+  sectionState: SectionType
+  sectionDispatch: Dispatch<SectionActionType>
 }
 
 const Context = createContext<ContextType | null>(null)
 export function SectionProvider({ children }: PropsWithChildren) {
-  const [state, dispatch] = useReducer(sectionReducer, {
+  const [sectionState, sectionDispatch] = useReducer(sectionReducer, {
     phase: "ready",
     selectedTopic: "react",
     selectedDifficulty: "beginner",
   })
 
   return (
-    <Context.Provider value={{ state, dispatch }}>{children}</Context.Provider>
+    <Context.Provider value={{ sectionState, sectionDispatch }}>
+      {children}
+    </Context.Provider>
   )
 }
 

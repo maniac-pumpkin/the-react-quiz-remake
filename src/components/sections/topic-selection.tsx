@@ -13,11 +13,11 @@ const topics = [
 ]
 
 export default function TopicSelectionSection() {
-  const { dispatch } = useSectionContext()
+  const { sectionDispatch } = useSectionContext()
 
   const handleTopicSelection = (topic: TopicType) => {
-    dispatch({ type: "update/topic", payload: topic })
-    dispatch({ type: "update/phase", payload: "difficulty_selection" })
+    sectionDispatch({ type: "update/topic", payload: topic })
+    sectionDispatch({ type: "update/phase", payload: "difficulty_selection" })
   }
 
   return (

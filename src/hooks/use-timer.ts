@@ -8,7 +8,7 @@ const useTimer = (timeInMin: number, onTimeUp: () => void) => {
   useEffect(() => {
     intervalId = setInterval(() => {
       setTimer((prev) => {
-        if (prev === 1) {
+        if (prev <= 1) {
           clearInterval(intervalId)
           onTimeUp()
           return 0

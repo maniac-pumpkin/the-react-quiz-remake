@@ -37,21 +37,21 @@ const determineDiff = (difficulty: DiffType) => {
 const useInitializeQuiz = (
   topic: TopicType,
   difficulty: DiffType,
-  dispatch: Dispatch<QuizActionType>,
+  quizDispatch: Dispatch<QuizActionType>,
 ) => {
   useEffect(() => {
-    dispatch({
+    quizDispatch({
       type: "assign/questions",
       payload: determineTopic(topic).slice(
         0,
         determineDiff(difficulty).maxQues,
       ),
     })
-    dispatch({
+    quizDispatch({
       type: "update/maxTime",
       payload: determineDiff(difficulty).maxTime,
     })
-  }, [difficulty, topic, dispatch])
+  }, [difficulty, topic, quizDispatch])
 }
 
 export default useInitializeQuiz

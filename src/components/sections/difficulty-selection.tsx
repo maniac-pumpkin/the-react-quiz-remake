@@ -13,15 +13,15 @@ const difficulties = [
 ]
 
 export default function DifficultySelectionSection() {
-  const { dispatch } = useSectionContext()
+  const { sectionDispatch } = useSectionContext()
 
   const handleDiffSelection = (diff: DiffType) => {
-    dispatch({ type: "update/difficulty", payload: diff })
-    dispatch({ type: "update/phase", payload: "started" })
+    sectionDispatch({ type: "update/difficulty", payload: diff })
+    sectionDispatch({ type: "update/phase", payload: "started" })
   }
 
   const goBackToTopics = () =>
-    dispatch({ type: "update/phase", payload: "topic_selection" })
+    sectionDispatch({ type: "update/phase", payload: "topic_selection" })
 
   return (
     <Wrapper>

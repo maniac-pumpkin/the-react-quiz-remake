@@ -9,18 +9,18 @@ import { useSectionContext } from "../../contexts/section.context"
 
 export default function QuestionSection() {
   const [option, setOption] = useState<number | null>(null)
-  const { dispatch: sectionDispatch } = useSectionContext()
+  const { sectionDispatch } = useSectionContext()
   const {
-    state: { questions, currentIndex },
-    dispatch: quizDispatch,
+    quizState: { questions, currentIndex },
+    quizDispatch: quizDispatch,
   } = useQuizContext()
 
   const isOptionCorrect = option === questions?.[currentIndex].correctAnswer
   const listColor = isOptionCorrect ? "green" : "red"
 
   const handleNextQuestion = () => {
-    quizDispatch({ type: "inc/currentIndex" })
     setOption(null)
+    quizDispatch({ type: "inc/currentIndex" })
     if (isOptionCorrect) {
       quizDispatch({ type: "inc/correctAnswers" })
       quizDispatch({
@@ -30,8 +30,10 @@ export default function QuestionSection() {
     }
   }
 
-  const handleQuit = () =>
+  const handleQuit = () => {
     sectionDispatch({ type: "update/phase", payload: "completed" })
+    quizDispatch({ type: "reset/timer" })
+  }
 
   return (
     <Wrapper className="w-[550px]">

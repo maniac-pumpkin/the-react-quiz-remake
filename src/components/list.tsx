@@ -5,7 +5,9 @@ type PropsType = {
   color?: "default" | "red" | "green"
 } & LiHTMLAttributes<HTMLLIElement>
 
-const applyStyle = (mode: PropsType["color"]) => {
+type ColorType = PropsType["color"]
+
+const applyStyle = (mode: ColorType) => {
   switch (mode) {
     case "default":
       return "bg-softDark"

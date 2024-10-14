@@ -5,10 +5,10 @@ import useTimer from "../hooks/use-timer"
 
 function Timer() {
   const {
-    state: { maxTime },
-    dispatch: quizDispatch,
+    quizState: { maxTime },
+    quizDispatch,
   } = useQuizContext()
-  const { dispatch: sectionDispatch } = useSectionContext()
+  const { sectionDispatch } = useSectionContext()
 
   const onTimeUp = useCallback(() => {
     quizDispatch({ type: "reset/timer" })
